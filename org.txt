@@ -1,0 +1,67 @@
+// Function to get the last two letters of a word
+function getLastTwoLetters(word) {
+    if (word.length < 2) {
+        return word;
+    } else {
+        return word.substring(word.length - 2);
+    }
+}
+
+// Function to find rhymes for a given word
+function suggestRhymes(wordList, word) {
+    const Inputword = getLastTwoLetters(word);
+    const rhymes = [];
+
+    for (let i = 0; i < wordList.length; i++) {
+        const Listword = wordList[i];
+        if (Listword === word) {
+            continue;
+        }
+
+        const Listwordcheck = getLastTwoLetters(Listword);
+        if (Listwordcheck === Inputword) {
+            rhymes.push(Listword);
+        }
+    }
+
+    if (rhymes.length === 0) {
+        return "No rhymes found.";
+    } else {
+        return rhymes;
+    }
+}
+
+// Main Program
+const wordList = [
+    "cat", "bat", "hat", "mat", "rat", "flat", "that", "gnat", "spat",
+    "combat", "bureaucrat", "laundromat", "thermostat", "sat", "pat", 
+    "brat", "chat", "vat", "format", "acrobat", "diplomat", "aristocrat",
+    "dog", "fog", "log", "hog", "bog", "frog", "clog", "catalog", "dialog",
+    "tree", "free", "bee", "knee", "flee", "three", "degree", "agree", 
+    "decree", "key", "sea", "pea", "tea", "me", "see", "glee", "we", 
+    "fee", "guarantee", "jubilee", "amnesty", "mystery", "chemistry", 
+    "symmetry", "history", "victory", "glory", "allegory", "category","weight",
+    "great","night", "light", "might", "sight", "fight", "height", "bright", 
+    "flight", "right", "tight", "blight", "delight", "knight", "bite",
+    "kite", "site", "write", "white", "trite", "ignite", "polite",
+    "red", "bed", "fed", "shed", "led", "thread", "spread", "dead", 
+    "head", "read", "said", "bread", "instead", "misread", "overhead",
+    "blue", "clue", "glue", "true", "cue", "rescue", "pursue", "hue", 
+    "due", "value", "venue", "avenue", "renew", "subdue", "ensue", "crew",
+    "star", "far", "car", "bar", "jar", "scar", "guitar", "avatar", "bazaar",
+    "par", "radar", "calendar", "superstar", "altar", "bizarre", "tar",
+    "stone", "cone", "phone", "drone", "throne", "alone", "zone", "clone", 
+    "bone", "moan", "groan", "tone", "known", "prone", "shown", "grown"
+];
+
+
+const key = "> cat";
+
+console.log(key);
+const result = suggestRhymes(wordList, key);
+
+if (Array.isArray(result)) {
+    console.log("> " + result.join(", "));
+} else {
+    console.log("> " + result);
+}
